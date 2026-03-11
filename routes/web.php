@@ -35,11 +35,27 @@ Route :: get('/display', function() {
 // }); 
 
 //======== Constraint Routing with numbers ===========
-Route :: get('/user/{id}', function($id) {
-    return "The details are : $id";
-})->where('id', '[0-9]+'); 
+// Route :: get('/user/{id}', function($id) {
+//     return "The details are : $id";
+// })->where('id', '[0-9]+'); 
 
 //======== Constraint Routing with Alphabets ===========
-Route :: get('/user/{name}', function($name) {
-    return "Constraint Routing with Alphabets : $name";
-})->where('name', '[a-zA-Z]+'); 
+// Route :: get('/user/{name}', function($name) {
+//     return "Constraint Routing with Alphabets : $name";
+// })->where('name', '[a-zA-Z]+'); 
+
+//======== Constraint Routing with Conditions ===========
+// Route :: get('/user/{id}', function($id) {
+//     return "Constraint Routing with conditions : $id";
+// })->where('id', '[0-9]{4}'); 
+
+//======== Fallback Routing ===========
+Route :: get('/home', function() {
+    return "Hi, I am in Homepage";
+}); 
+Route :: get('/about', function() {
+    return "Hi, I am in About Page";
+});
+Route :: fallback(function() {
+    return "Sorry, the page you are looking for is not found";
+}); 
