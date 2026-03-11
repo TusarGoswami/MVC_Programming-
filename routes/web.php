@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// Basic Routing
+// ================ Basic Routing ================
 Route::get('/', function () {
     return "Hello To Laravel Class";
 });
@@ -19,7 +19,17 @@ Route :: get('/display', function() {
     }
 });
 
-//Required Routing
+//======== Required Routing ===========
 Route :: get('/user/{name}', function($name) {
     return "Welcome $name";
 });
+
+//======== Optional Routing ===========
+Route :: get('/user/{name?}', function($name = 'Guest') {
+    return "Welcome $name";
+});
+
+//======== Multivalue Routing ===========
+Route :: get('/user/{name}/{age}', function($name = 'Guest', $age) {
+    return "Welcome $name, you are $age years old";
+}); 
