@@ -1,3 +1,2 @@
-<div>
-    <!-- Simplicity is the essence of happiness. - Cedric Bledsoe -->
-</div>
+<h1> HI, i am inside data view </h1>
+<h2> Here we will practice named routes </h2>

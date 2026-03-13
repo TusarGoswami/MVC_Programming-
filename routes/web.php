@@ -2,22 +2,22 @@
 
 use Illuminate\Support\Facades\Route;
 // ================ Basic Routing ================
-Route::get('/', function () {
-    return "Hello To Laravel Class";
-});
+// Route::get('/', function () {
+//     return "Hello To Laravel Class";
+// });
 
-Route :: get('/courses', function() {
-    $course = ['PHP', 'Java', 'Python', 'C++']; 
-    foreach($course as $c){
-        echo "$c". "<br>";
-    }
-});
+// Route :: get('/courses', function() {
+//     $course = ['PHP', 'Java', 'Python', 'C++']; 
+//     foreach($course as $c){
+//         echo "$c". "<br>";
+//     }
+// });
 
-Route :: get('/display', function() {
-    for($i=0; $i<10; $i++){
-        echo "$i". "<br>";
-    }
-});
+// Route :: get('/display', function() {
+//     for($i=0; $i<10; $i++){
+//         echo "$i". "<br>";
+//     }
+// });
 
 //======== Required Routing ===========
 // Route :: get('/user/{name}', function($name) {
@@ -108,6 +108,7 @@ Route :: get('/display', function() {
 
 
 // Group Routing - for grouping or organizing the tasks
+
 //    Route:: prefix('admin')-> group(function(){
 //     Route:: get('/home', function(){
 //         return "I am inside home function";
@@ -121,13 +122,82 @@ Route :: get('/display', function() {
 //    });
 
    //Create a constraint routing in which the url would be student/details/y here y is a constraint, when you write any thing except y it will generate coustomized message "you made a wrong entry"
-    Route:: get('/student/details/{id}', function($id){
-        return "The details of student with id $id";
-    })-> where('id', 'y')-> name('student.details');
 
-    Route:: fallback(function(){
-        return "You made a wrong entry";
-    });
+    // Route:: get('/student/details/{id}', function($id){
+    //     return "The details of student with id $id";
+    // })-> where('id', 'y')-> name('student.details');
+
+    // Route:: fallback(function(){
+    //     return "You made a wrong entry";
+    // });
 
 
-    //Name Route
+    // Route:: get('/', function(){
+    //     return view('welcome');
+    // });
+    // Route:: view('/scai/hello/cse/web/block27/', 'data')->name('data');
+
+    /*
+|--------------------------------------------------------------------------
+| Google Developer Management Portal Routes
+|--------------------------------------------------------------------------
+*/
+   //Imagine you are a software developer at Google developing a Google Developer Management Portal using laravel. Your task is to design routing in web.php for the portal. Create a route that displays a developer profile using a required parameter(developer name) and another route that shows developer name and the project they are working on using multiple parameters. Implement a profile route where the developer's experience is optional  and if it is not provided, display a deafult message. Add a route that displays employee details but accepts only numeric values using constraint routing. Finally, create a admin panel route that groups all admin related routes together with the prefix 'admin'. Inside which there should be routes for dashboard, managing developers, and managing projects. Finally implement a fallback route that shows "404-Google Developer Portal Page Not Found" whenever user tries to acess a route that does not exixt
+
+
+// /* 1️⃣ Required Parameter (Developer Profile) */
+// Route::get('/developer/{name}', function ($name) {
+//     return "Developer Profile: $name";
+// });
+
+
+// /* 2️⃣ Multiple Parameters (Developer + Project) */
+// Route::get('/developer/{name}/project/{project}', function ($name, $project) {
+//     return "Developer $name is working on project $project";
+// });
+
+
+// /* 3️⃣ Optional Parameter (Experience) */
+// Route::get('/developer/profile/{name}/{experience?}', function ($name, $experience = null) {
+
+//     if ($experience) {
+//         return "Developer $name has $experience years of experience";
+//     }
+
+//     return "Developer $name - Experience not provided";
+// });
+
+
+// /* 4️⃣ Constraint Routing (Only Numeric Employee ID) */
+// Route::get('/employee/{id}', function ($id) {
+//     return "Employee details for ID: $id";
+// })->whereNumber('id');
+
+
+// /* 5️⃣ Admin Route Group with Prefix */
+// Route::prefix('admin')->group(function () {
+
+//     Route::get('/dashboard', function () {
+//         return "Admin Dashboard";
+//     });
+
+//     Route::get('/developers', function () {
+//         return "Manage Developers";
+//     });
+
+//     Route::get('/projects', function () {
+//         return "Manage Projects";
+//     });
+
+// });
+
+
+// /* 6️⃣ Fallback Route */
+// Route::fallback(function () {
+//     return "404 - Google Developer Portal Page Not Found";
+// });
+
+Route:: get('/', function(){
+    $courses = ['PHP', 'Java', 'Python', 'C++'];
+    return view('student',['courses'=>$courses]);
+});
